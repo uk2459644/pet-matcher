@@ -9,7 +9,7 @@ This app demonstrates clean architecture, reusable components, and seamless user
 ## Screenshots
 
 | Home Screen | Add Pet | Preview | Success Confirm |
-|:------------:|:--------:|:------------:|
+|:------------:|:--------:|:------------:|:------------:|
 | ![Home](assets/1.jpg) | ![Add Pet](assets/2.jpg) | ![Preview](assets/3.jpg) | ![Success Confirm](assets/4.jpg) |
 
 
