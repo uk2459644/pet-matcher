@@ -1,97 +1,157 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 🐾 Pet Matcher – React Native App
 
-# Getting Started
+A mobile app for adding and managing pets with a modern UI, dark/light theme support, and API integration.  
+This app demonstrates clean architecture, reusable components, and seamless user flow.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+---
 
-## Step 1: Start Metro
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Screenshots
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+| Home Screen | Add Pet | Preview | Success Confirm |
+|:------------:|:--------:|:------------:|
+| ![Home](assets/1.jpg) | ![Add Pet](assets/2.jpg) | ![Preview](assets/3.jpg) | ![Success Confirm](assets/4.jpg) |
 
-```sh
-# Using npm
-npm start
 
-# OR using Yarn
-yarn start
+---
+
+## 🚀 How to Run the App
+
+### 1️⃣ Clone the repository
+```bash
+git clone https://github.com/uk2459644/pet-matcher.git
+cd pet-matcher
+````
+
+### 2️⃣ Install dependencies
+
+```bash
+npm install
+# or
+yarn install
 ```
 
-## Step 2: Build and run your app
+### 3️⃣ Run on Android
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+Make sure an emulator or device is connected:
 
-### Android
-
-```sh
-# Using npm
+```bash
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### iOS
+### 4️⃣ Run on iOS (macOS only)
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+```bash
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+### 5️⃣ Start Metro Bundler (if not already)
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+```bash
+npm start
+```
 
-## Step 3: Modify your app
+---
 
-Now that you have successfully run the app, let's make changes!
+## 💻 Platform Used
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+| Tool / Platform        | Purpose                                                |
+| ---------------------- | ------------------------------------------------------ |
+| **React Native (CLI)** | Core framework for building cross-platform mobile apps |
+| **Android Studio**     | Android emulator and build environment                 |
+| **Xcode**              | iOS simulator (if on macOS)                            |
+| **VS Code**            | Development IDE                                        |
+| **Webhook.site**       | Mock API endpoint for testing form submissions         |
+| **Dog CEO API**        | Public API to fetch random dog images                  |
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+---
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+## 🏗️ Architecture Overview
 
-## Congratulations! :tada:
+The project follows a **modular and scalable architecture** used in professional React Native projects:
 
-You've successfully run and modified your React Native App. :partying_face:
+```
+src/
+├── components/        # Reusable UI components (Header, Buttons, etc.)
+├── navigation/        # Navigation Setup (Stack, Tabs)
 
-### Now what?
+├── screens/           # Individual app screens (AddPet, Confirm, Success, MyPets)
+├── theme/             # ThemeContext (light/dark mode + design tokens)
+├── global/            # Global constants (Screen names, utilities)
+├── utils/             # helper functions
+└── App.js             # Entry point, Navigation setup
+```
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+### **State Management**
 
-# Troubleshooting
+* Local state via React hooks (`useState`, `useEffect`, `useContext`)
+* Theme handled globally using `ThemeContext`
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+### **Navigation**
 
-# Learn More
+* Managed with **React Navigation (Stack Navigator)**
+* App Flow:
+  `MyPetsScreen → AddPetScreen → ConfirmPetScreen → SuccessScreen`
 
-To learn more about React Native, take a look at the following resources:
+### **Data Flow**
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+* Form data submitted via **Webhook.site**
+* API response determines navigation and state updates
+* Random dog image fetched from **Dog CEO API**
+
+---
+
+## 🧩 Key Libraries
+
+| Library                       | Purpose                                             |
+| ----------------------------- | --------------------------------------------------- |
+| **react-native-vector-icons** | Cross-platform icons                                |
+| **@react-navigation/native**  | Navigation stack                                    |
+| **@react-navigation/stack**   | Screen transitions                                  |
+| **ThemeContext (custom)**     | Global theme system for colors, typography, spacing |
+| **fetch API**                 | For network calls (Webhook.site + Dog API)          |
+
+---
+
+## 🎨 Design System
+
+All styles are driven by a custom **ThemeProvider**, ensuring consistent design across screens.
+
+* **Spacing scale:** `xs → xxxl`
+* **Font sizes:** `xs → display`
+* **Font weights:** `regular → extrabold`
+* **Color palette:** light/dark themes
+* **Border radius:** `sm → full`
+
+This ensures pixel-perfect UI and effortless scalability.
+
+---
+
+## 🧠 Highlights
+
+* 🌓 Adaptive Light/Dark theme
+* 🐶 Random dog image via Dog CEO API
+* 📱 Fully responsive layout with theme spacing
+* ♻️ Reusable `Header` and `FloatingButton` components
+* ⚡ Clean API handling with loading, error & success states
+* 🔁 Smooth screen transitions
+
+---
+
+## 📸 App Flow
+
+1️⃣ **MyPets Screen** – Displays random dog image
+2️⃣ **AddPet Screen** – Add new pet details
+3️⃣ **ConfirmPet Screen** – Review and confirm info
+4️⃣ **Success Screen** – Confirmation with pet details
+
+---
+
+## 🧑‍💻 Author
+
+**Upendra Kumar**
+Frontend & React Native Developer
+📧 [[uk2459644@gmail.com](uk2459644@gmail.com)]
+
+---
+"# pet-matcher" 
